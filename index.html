@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Khata — Credit Book</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- SVG Icon Sprite -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="ic-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+  </symbol>
+  <symbol id="ic-credit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+  </symbol>
+  <symbol id="ic-payment" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="17" y1="7" x2="7" y2="17"/><polyline points="17 17 7 17 7 7"/>
+  </symbol>
+  <symbol id="ic-balance" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="21"/><path d="M3 6l9-3 9 3"/>
+    <path d="M6 9H3l3 6a3 3 0 0 0 6 0l3-6H9z"/><path d="M18 9h-3l3 6a3 3 0 0 0 6 0l-3-6z"/>
+  </symbol>
+  <symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+  </symbol>
+  <symbol id="ic-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+  </symbol>
+  <symbol id="ic-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="6 9 12 15 18 9"/>
+  </symbol>
+  <symbol id="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </symbol>
+  <symbol id="ic-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+  </symbol>
+  <symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/>
+  </symbol>
+  <symbol id="ic-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+  </symbol>
+  <symbol id="ic-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+  </symbol>
+  <symbol id="ic-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+  </symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
+  </symbol>
+  <symbol id="ic-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+  </symbol>
+</svg>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-brand">
+    <div class="header-icon">
+      <svg width="22" height="22" style="color:#fff"><use href="#ic-book"/></svg>
+    </div>
+    <div>
+      <div class="header-title">Digital Khata</div>
+      <div class="header-sub">Credit Book</div>
+    </div>
+  </div>
+  <div class="header-date" id="headerDate"></div>
+</header>
+
+<!-- Main App -->
+<div class="app">
+
+  <!-- Mobile Summary -->
+  <div id="mobileOnly">
+    <div class="summary">
+      <div class="sum-card credit">
+        <div class="sum-icon"><svg width="22" height="22" style="color:var(--red)"><use href="#ic-credit"/></svg></div>
+        <div><div class="sum-label">Total Credit</div><div class="sum-amount" id="totalCreditM">₹0</div></div>
+      </div>
+      <div class="sum-card paid">
+        <div class="sum-icon"><svg width="22" height="22" style="color:var(--green)"><use href="#ic-payment"/></svg></div>
+        <div><div class="sum-label">Received</div><div class="sum-amount" id="totalPaidM">₹0</div></div>
+      </div>
+      <div class="sum-card net">
+        <div class="sum-icon"><svg width="22" height="22" style="color:var(--gold)"><use href="#ic-balance"/></svg></div>
+        <div><div class="sum-label">Balance</div><div class="sum-amount" id="totalNetM">₹0</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Layout (Desktop: Sidebar + Content) -->
+  <div id="mainLayout">
+
+    <!-- Desktop Sidebar -->
+    <div id="desktopSidebar" class="sidebar" style="display:none;">
+      <div class="sidebar-title">
+        <svg width="16" height="16" style="color:var(--teal)"><use href="#ic-chart"/></svg> Summary
+      </div>
+      <div class="summary">
+        <div class="sum-card credit">
+          <div class="sum-icon"><svg width="22" height="22" style="color:var(--red)"><use href="#ic-credit"/></svg></div>
+          <div><div class="sum-label">Total Credit</div><div class="sum-amount" id="totalCreditD">₹0</div></div>
+        </div>
+        <div class="sum-card paid">
+          <div class="sum-icon"><svg width="22" height="22" style="color:var(--green)"><use href="#ic-payment"/></svg></div>
+          <div><div class="sum-label">Received</div><div class="sum-amount" id="totalPaidD">₹0</div></div>
+        </div>
+        <div class="sum-card net">
+          <div class="sum-icon"><svg width="22" height="22" style="color:var(--gold)"><use href="#ic-balance"/></svg></div>
+          <div><div class="sum-label">Balance</div><div class="sum-amount" id="totalNetD">₹0</div></div>
+        </div>
+      </div>
+      <div style="margin-top:20px;padding-top:14px;border-top:1px dashed #d9cfc0;">
+        <div class="sidebar-title">
+          <svg width="16" height="16" style="color:var(--teal)"><use href="#ic-users"/></svg> Customers
+        </div>
+        <div style="font-size:13px;color:#888" id="sidebarCount">0 customers</div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+      <div class="toolbar">
+        <div class="search-wrap">
+          <span class="search-icon"><svg width="16" height="16" style="color:#aaa"><use href="#ic-search"/></svg></span>
+          <input type="text" id="searchInput" placeholder="Search customer...">
+        </div>
+        <button class="btn-add" onclick="openAddCustomer()">
+          <svg width="16" height="16"><use href="#ic-plus"/></svg> Add Customer
+        </button>
+      </div>
+      <div class="customers-label">All Customers</div>
+      <div class="customer-list" id="customerList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FAB (Mobile) -->
+<button class="fab" onclick="openAddCustomer()">
+  <svg width="24" height="24"><use href="#ic-plus"/></svg>
+</button>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast">
+  <svg width="14" height="14" id="toastIcon"></svg>
+  <span id="toastMsg"></span>
+</div>
+
+<!-- Modal: Add Customer -->
+<div class="overlay" id="modalAddCustomer">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">
+        <svg width="20" height="20" style="color:var(--teal)"><use href="#ic-user"/></svg> Add Customer
+      </div>
+      <button class="modal-close" onclick="closeModal('modalAddCustomer')">
+        <svg width="14" height="14"><use href="#ic-close"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Customer Name *</label>
+        <input class="form-input" id="newName" placeholder="e.g. Ramesh Kumar" type="text">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input class="form-input" id="newPhone" placeholder="e.g. 9876543210" type="tel">
+      </div>
+      <button class="btn-primary" onclick="addCustomer()">
+        <svg width="17" height="17"><use href="#ic-plus"/></svg> Add Customer
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Add Credit -->
+<div class="overlay" id="modalCredit">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" style="color:var(--red)">
+        <svg width="20" height="20" style="color:var(--red)"><use href="#ic-credit"/></svg> Add Credit
+      </div>
+      <button class="modal-close" onclick="closeModal('modalCredit')">
+        <svg width="14" height="14"><use href="#ic-close"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-for-customer">
+        <svg width="15" height="15" style="color:var(--teal-dark)"><use href="#ic-user"/></svg>
+        <span id="creditFor"></span>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Amount (₹) *</label>
+        <input class="form-input" id="creditAmount" placeholder="e.g. 500" type="number" min="1">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Note / Item</label>
+        <input class="form-input" id="creditNote" placeholder="e.g. Groceries, Milk…" type="text">
+      </div>
+      <button class="btn-primary danger" onclick="addEntry('credit')">
+        <svg width="17" height="17"><use href="#ic-credit"/></svg> Add Credit Entry
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Record Payment -->
+<div class="overlay" id="modalPayment">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" style="color:var(--green)">
+        <svg width="20" height="20" style="color:var(--green)"><use href="#ic-payment"/></svg> Record Payment
+      </div>
+      <button class="modal-close" onclick="closeModal('modalPayment')">
+        <svg width="14" height="14"><use href="#ic-close"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-for-customer">
+        <svg width="15" height="15" style="color:var(--teal-dark)"><use href="#ic-user"/></svg>
+        <span id="paymentFor"></span>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Amount (₹) *</label>
+        <input class="form-input" id="paymentAmount" placeholder="e.g. 200" type="number" min="1">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Note</label>
+        <input class="form-input" id="paymentNote" placeholder="e.g. Cash received" type="text">
+      </div>
+      <button class="btn-primary success" onclick="addEntry('payment')">
+        <svg width="17" height="17"><use href="#ic-payment"/></svg> Record Payment
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Edit Customer -->
+<div class="overlay" id="modalEditCustomer">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">
+        <svg width="20" height="20" style="color:var(--teal)"><use href="#ic-user"/></svg> Edit Customer
+      </div>
+      <button class="modal-close" onclick="closeModal('modalEditCustomer')">
+        <svg width="14" height="14"><use href="#ic-close"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Customer Name *</label>
+        <input class="form-input" id="editCustName" placeholder="e.g. Ramesh Kumar" type="text">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input class="form-input" id="editCustPhone" placeholder="e.g. 9876543210" type="tel">
+      </div>
+      <button class="btn-primary" onclick="saveEditCustomer()">
+        <svg width="17" height="17"><use href="#ic-check"/></svg> Save Changes
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Edit Entry -->
+<div class="overlay" id="modalEditEntry">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" style="color:var(--teal-dark)">
+        <svg width="20" height="20" style="color:var(--teal)"><use href="#ic-clipboard"/></svg> Edit Transaction
+      </div>
+      <button class="modal-close" onclick="closeModal('modalEditEntry')">
+        <svg width="14" height="14"><use href="#ic-close"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Type</label>
+        <select class="form-input" id="editEntryType">
+          <option value="credit">Credit (Given)</option>
+          <option value="payment">Payment (Received)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Amount (₹) *</label>
+        <input class="form-input" id="editEntryAmount" placeholder="e.g. 500" type="number" min="1">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Note / Item</label>
+        <input class="form-input" id="editEntryNote" placeholder="e.g. Groceries, Milk…" type="text">
+      </div>
+      <button class="btn-primary" onclick="saveEditEntry()">
+        <svg width="17" height="17"><use href="#ic-check"/></svg> Save Changes
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
